@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Wits</string>
+    <string name="filter_icon">Filter Icon</string>
 </resources>
