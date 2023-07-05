@@ -13,6 +13,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
+import com.joel.wits.screens.StartPage
 import com.joel.wits.ui.theme.WitsTheme
 
 class MainActivity : ComponentActivity() {
@@ -25,16 +26,17 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Box(
-                        contentAlignment = Alignment.Center,
-                        modifier = Modifier
-                            .fillMaxSize()
-                    ){
-                        Text(
-                            text = "WITS",
-                            fontSize = 24.sp
-                        )
-                    }
+                    StartPage()
+//                    Box(
+//                        contentAlignment = Alignment.Center,
+//                        modifier = Modifier
+//                            .fillMaxSize()
+//                    ){
+//                        Text(
+//                            text = "WITS",
+//                            fontSize = 24.sp
+//                        )
+//                    }
                 }
             }
         }
