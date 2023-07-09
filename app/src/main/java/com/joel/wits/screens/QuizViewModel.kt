@@ -7,7 +7,7 @@ import com.joel.wits.questions.SingleChoiceQuestion
 
 class QuizViewModel : ViewModel() {
 
-    private val questions : List<SingleChoiceQuestion> = DataSource.multipleChoicesQuestion
+    private val questions = DataSource.multipleChoicesQuestion
 
     private var questionIndex = 0
 
@@ -16,7 +16,7 @@ class QuizViewModel : ViewModel() {
         get() = _isNextEnabled.value
 
     private var _quizData = mutableStateOf(createQuizData())
-    val quizData : QuizData
+    val quizData : QuizData?
         get() = _quizData.value
 
     private var _choiceResponse = mutableStateOf<String?>(null)
@@ -36,7 +36,7 @@ class QuizViewModel : ViewModel() {
             showSubmitButton = questionIndex == questions.size -1,
             questionIndex = questionIndex,
             totalQuestions = questions.size,
-            multipleChoice = questions[questionIndex]
+            multipleChoice = questions
         )
     }
 
@@ -67,7 +67,7 @@ class QuizViewModel : ViewModel() {
     }
 
     //enables the next button only if a choice is selected
-    fun getNextEnabled(enabled : Boolean = true) : Boolean {
+    private fun getNextEnabled(enabled : Boolean = true) : Boolean {
         val value =  if (enabled){
             _choiceResponse.value != null
         } else {
@@ -77,7 +77,7 @@ class QuizViewModel : ViewModel() {
     }
 
     //handles navigating from question to question either previous or next question
-    fun changeQuestion(newQuestion : Int){
+    private fun changeQuestion(newQuestion : Int){
         questionIndex = newQuestion
         _quizData.value = createQuizData()
         _isNextEnabled.value = getNextEnabled()
@@ -92,5 +92,5 @@ data class QuizData(
     val showSubmitButton : Boolean,
     val questionIndex : Int,
     val totalQuestions : Int,
-    val multipleChoice: SingleChoiceQuestion
+    val multipleChoice: List<SingleChoiceQuestion>
 )

@@ -23,7 +23,11 @@ import com.joel.wits.ui.theme.WitsTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun StartPage(){
+fun StartPage(
+    onStartQuiz : () -> Unit
+){
+
+
 
     val composition by rememberLottieComposition(spec = LottieCompositionSpec.RawRes(R.raw.get_started_lottie))
     val progress by animateLottieCompositionAsState(
@@ -36,7 +40,9 @@ fun StartPage(){
             StartPageToolBar()
         },
         bottomBar = {
-            StartPageStartQuizBottomToolBar()
+            StartPageStartQuizBottomToolBar(
+                onStartQuiz = { onStartQuiz() }
+            )
         }
     ) { paddingValues ->
         Box(
@@ -55,6 +61,6 @@ fun StartPage(){
 @Composable
 fun StartPagePreview() {
     WitsTheme {
-        StartPage()
+
     }
 }
