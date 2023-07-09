@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">Wits</string>
     <string name="filter_icon">Filter Icon</string>
+    <string name="close_icon">Close Icon</string>
+    <string name="previous_button">Previous</string>
+    <string name="submit_button">Submit</string>
+    <string name="next_button">Next</string>
+    <string name="question_count">\u00A0of %d</string>
+
 </resources>
