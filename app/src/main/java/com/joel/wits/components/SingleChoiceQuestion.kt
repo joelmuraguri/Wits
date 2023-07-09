@@ -1,6 +1,5 @@
 package com.joel.wits.components
 
-import androidx.annotation.StringRes
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
@@ -24,27 +23,24 @@ import com.joel.wits.questions.SingleChoiceQuestion
 
 @Composable
 fun MultipleChoiceQuestion(
-    @StringRes questionResourceId: Int,
-    @StringRes directionsResourceId: Int,
+    singleChoiceQuestion: SingleChoiceQuestion,
     modifier: Modifier = Modifier,
-    possibleAnswers: List<String>,
     selectedAnswer: String?,
     onChoiceSelected: (String) -> Unit,
-    singleChoiceQuestion: SingleChoiceQuestion
 ){
 
     QuestionWrapper(
-        questionResourceId = questionResourceId,
-        directionsResourceId = directionsResourceId,
+        question = singleChoiceQuestion.questionText,
+        directions = "Select One",
         modifier = modifier.selectableGroup(),
     ) {
-        possibleAnswers.forEach {
+        singleChoiceQuestion.possibleAnswers.forEach {
             val selected = it == selectedAnswer
             RadioButtonWithText(
-                modifier = Modifier.padding(vertical = 8.dp),
-                text = stringResource(id = it.toInt()),
                 selected = selected,
-                onChoiceSelected = { onChoiceSelected(it) }
+                onChoiceSelected = { onChoiceSelected(it) },
+                text = it,
+                modifier = Modifier.padding(vertical = 8.dp)
             )
         }
     }
